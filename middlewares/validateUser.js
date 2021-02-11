@@ -17,8 +17,6 @@ const validateUser = rescue(async (req, res, next) => {
   if (quickFixComplexityError(email, password, name)) return res.status(400).json(invalidErr);
   if (!regex.test(email)) return res.status(400).json(invalidErr);
 
-  if (!regex.test(email)) return res.status(401).json(invalidErr);
-
   const emailAlreadyExists = await findEmail(email);
 
   if (emailAlreadyExists) return res.status(409).json(alreadyExistsErr);
