@@ -6,16 +6,10 @@ const alreadyExistsErr = { message: 'Email already registered' };
 
 const regex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
 
-const quickFixComplexityError = (email, password, name) => {
-  if (!email || !password || !name) return true;
-  return false;
-};
-
 const validateUser = rescue(async (req, res, next) => {
   const { name, email, password } = req.body;
-  // if (!name || !email || !regex.test(email) || !password) return res.status(400).json(invalidErr);
-  if (quickFixComplexityError(email, password, name)) return res.status(400).json(invalidErr);
-  if (!regex.test(email)) return res.status(400).json(invalidErr);
+
+  if (!name || !email || !regex.test(email) || !password) return res.status(400).json(invalidErr);
 
   const emailAlreadyExists = await findEmail(email);
 
