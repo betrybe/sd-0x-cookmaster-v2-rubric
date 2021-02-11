@@ -6,14 +6,13 @@ const incErr = { message: 'Incorrect username or password' };
 
 const regex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
 
-// const quickFixComplexityError = (email, password) => {
-//   if (!regex.test(email)) return 401;
-// };
+const quickFixComplexityError = (email, password) => (!!((!email || !password)));
 
 const validateLogin = rescue(async (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!email || !password) return res.status(401).json(fillErr);
+  // if (!email || !password) return res.status(401).json(fillErr);
+  if (quickFixComplexityError(email, password)) return res.status(401).json(fillErr);
 
   if (!regex.test(email)) return res.status(401).json(incErr);
 
