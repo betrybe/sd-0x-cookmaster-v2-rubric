@@ -1,7 +1,7 @@
 const rescue = require('express-rescue');
 const { findEmail } = require('../models');
 
-const fillErr = { message: 'All fields must be filled' };
+// const fillErr = { message: 'All fields must be filled' };
 const incErr = { message: 'Incorrect username or password' };
 
 const regex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
