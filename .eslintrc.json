@@ -8,5 +8,14 @@
       "jest": true
   },
   "extends": "trybe-backend",
-  "parserOptions": { "ecmaVersion": 11 }
+  "parserOptions": { "ecmaVersion": 11 },
+  "rules": {
+    "complexity": [
+      "error",
+      15
+    ]
+  },
+  "globals":{
+    "db": "writable"
+  }
 }
