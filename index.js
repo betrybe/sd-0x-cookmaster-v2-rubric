@@ -5,7 +5,7 @@ const path = require('path');
 const errorHandler = require('./middlewares/errorHandler');
 const routes = require('./routes');
 
-const { PORT } = process.env || 3000;
+const { PORT } = process.env;
 const app = express();
 
 // não remova esse endpoint, e para o avaliador funcionar
@@ -21,4 +21,4 @@ app.use(routes);
 
 app.use(errorHandler);
 
-app.listen(PORT, console.log(`ouvindo na port ${PORT}`));
+app.listen(PORT || 3000, console.log(`ouvindo na port ${PORT || 3000}`));
